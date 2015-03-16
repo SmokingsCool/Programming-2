@@ -8,7 +8,7 @@
 #ifndef LIBRARYBOOK_H
 #define	LIBRARYBOOK_H
 
-class LibraryBook{
+class LibraryBook : Book{
     protected:
         long classification;
         enum status;

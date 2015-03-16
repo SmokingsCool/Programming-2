@@ -16,7 +16,7 @@ LibraryBook :: LibraryBook(char* author,char*title,long classif){
     strcpy(Author,author);
     strcpy(Title,title);
     int sizeAuthor = strlen(Author);
-}
+    }
 
 long LibraryBook::getClassification(){
     return classification;

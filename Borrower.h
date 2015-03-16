@@ -7,12 +7,18 @@
 
 #ifndef BORROWER_H
 #define	BORROWER_H
+#include <vector>
+using namespace std;
 class Borrower{
     protected:
         char address [];
         char name [];
         long charID;
+        vector<Book> borrowed;
+        vector<LibraryBook> currentlyBorrowed;
     public:
+        void borrowNewBook(LibraryBook);
+        void returnBook(LibraryBook);
         Borrower(char*,char*,long);
         char* getAddress();
         char* getName();

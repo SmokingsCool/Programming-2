@@ -12,8 +12,8 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
-    Book book1 ("A","A");
-    Book compareTo ("A","A");
+    LibraryBook book1 ("A","A");
+    LibraryBook compareTo ("A","A");
     if (book1 > compareTo){
         cout << "Book1 is greater than A i.e closer in alphabet" << endl;
          

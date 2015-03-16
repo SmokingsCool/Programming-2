@@ -7,23 +7,26 @@
 
 #ifndef BOOK_H
 #define	BOOK_H
-
+#include <cstring>
+#include<string>
+using namespace std;
 class Book {
 protected:
-    char Author;
-    char Title;
+    string Author;
+    string Title;
     int numberOfPages;
 public:
     
-    Book(char [] , char [] );
-    operator>(Book);
-    operator<(Book);
-    operator==(Book);
-    setAuthor();
-    setTitle();
-    getAuthor();
-    getTitle();
-    
+    Book(string, string );
+    inline bool operator>(Book);
+    inline bool operator<(Book);
+    inline bool operator==(Book);
+    void setAuthor(string);
+    void setTitle(string);
+    string getAuthor();
+    string getTitle();
+    void setPages(int);
+    int getPages();
 };
 #endif	/* BOOK_H */
 

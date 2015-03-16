@@ -13,7 +13,7 @@ class Library{
     
 };
 void Library::borrowBook(Borrower user,LibraryBook book){
-    if (book.getClassification() == 1){
+    if (book.getStatus() == 2){
         for (int i = 0; i < userCollection.size();i++){
             if (userCollection[i].getcharID() == user.getcharID()){
                 userCollection[i].borrowNewBook(book);
@@ -21,11 +21,25 @@ void Library::borrowBook(Borrower user,LibraryBook book){
         }
         for (int i = 0; i < bookCollection.size();i++){
             if (bookCollection[i].getcharID() == book.getClassification()){
-                bookCollection[i].ON_LOAN;
+                bookCollection[i].setStatus(1);
             }
         }
     }
     else{
         cout << "not available for lending this book" << endl;
     }
+}
+void Library::returnBook(Borrower user,LibraryBook book){
+    
+    for (int i = 0; i < userCollection.size();i++){
+        if (userCollection[i].getcharID() == user.getcharID()){
+            userCollection[i].returnBook(book);
+        }
+    }
+    for (int i = 0; i < bookCollection.size();i++){
+        if (bookCollection[i].getcharID() == book.getClassification()){
+            bookCollection[i].setStatus(2);
+        }
+    }
+        
 }

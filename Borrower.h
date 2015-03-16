@@ -26,6 +26,7 @@ class Borrower{
         void setAddress(char []);
         void setName(char []);
         long setcharID(long);
+        friend istream operator>>(istream , Borrower );
 };
 
 #endif	/* BORROWER_H */

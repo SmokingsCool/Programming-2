@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>Book.h</itemPath>
       <itemPath>Borrower.h</itemPath>
+      <itemPath>Library.h</itemPath>
       <itemPath>LibraryBook.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -17,6 +18,7 @@
                    projectFiles="true">
       <itemPath>Book.cpp</itemPath>
       <itemPath>Borrower.cpp</itemPath>
+      <itemPath>Library.cpp</itemPath>
       <itemPath>LibraryBook.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
@@ -49,6 +51,10 @@
       <item path="Borrower.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Borrower.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Library.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Library.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="LibraryBook.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -84,6 +90,10 @@
       <item path="Borrower.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Borrower.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Library.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Library.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="LibraryBook.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/Book.o \
 	${OBJECTDIR}/Borrower.o \
+	${OBJECTDIR}/Library.o \
 	${OBJECTDIR}/LibraryBook.o \
 	${OBJECTDIR}/main.o
 
@@ -74,6 +75,11 @@ ${OBJECTDIR}/Borrower.o: Borrower.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Borrower.o Borrower.cpp
+
+${OBJECTDIR}/Library.o: Library.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Library.o Library.cpp
 
 ${OBJECTDIR}/LibraryBook.o: LibraryBook.cpp 
 	${MKDIR} -p ${OBJECTDIR}

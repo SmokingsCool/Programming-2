@@ -9,6 +9,7 @@
 #define	BOOK_H
 
 class Book {
+protected:
     char Author;
     char Title;
     int numberOfPages;

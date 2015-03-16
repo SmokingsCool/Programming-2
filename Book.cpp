@@ -8,7 +8,7 @@
 #include <cstring>
 #include <iostream>
 class Book{
-    private:
+    protected:
         char Author [];
         char Title [];
         int numberOfPages;
@@ -34,8 +34,6 @@ Book::Book(char author[], char  title[]) {
     int sizeAuthor = strlen(Author);
     
 };
-
-
 Book::operator>(Book book){
     
     if (strcmp(book.getAuthor(),Author) == 0){
@@ -70,7 +68,6 @@ Book::operator<(Book book){
         return false;
     }
 };
-
 Book::operator==(Book book){
     
     if (strcmp(book.getAuthor(),Author) == 0 && strcmp(book.getTitle(),Title) == 0){
@@ -80,11 +77,6 @@ Book::operator==(Book book){
         return false;
     }
 }
-inline istream& operator>>(istream& is, Book book)
-{
-
-}
-
 void Book::setAuthor(char newValue []){
     strcpy(Author,newValue);
 };

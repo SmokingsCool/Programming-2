@@ -10,7 +10,7 @@
 #include <cstring>
 #include<string>
 using namespace std;
-class Book {
+class Book{
 protected:
     string Author;
     string Title;

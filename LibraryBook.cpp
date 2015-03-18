@@ -1,52 +1,81 @@
 #include <iostream>
+#include<string>
+#include "LibraryBook.h"
+#include <stdlib.h>
 using namespace std;
 
-class LibraryBook : public Book{
-    
-    protected: 
-        string classification;
-        
-    public:
-        enum status {ON_LOAN, AVAILABLE_FOR_LENDING,REFERENCE_ONLY};
-        status thisStatus;
-        istream operator>>(istream, LibraryBook );
-        LibraryBook(char*,char*,long);
-        string getClassification();
-        void setClassification(string);
-        void setStatus();
-        status getStatus();
-    
-    
-};
-LibraryBook :: LibraryBook(char* author,char*title,long classif){
-    strcpy(Author,author);
-    strcpy(Title,title);
-    int sizeAuthor = strlen(Author);
-    status.AVAILABLE_FOR_LENDING;
-    }
+
 void LibraryBook::setClassification(string newValue){
     classification = newValue;
 }
 string LibraryBook::getClassification(){
     return classification;
 }
-void LibraryBook::setStatus(status newStatus){
-    thisStatus = newStatus;
+void LibraryBook:: setStatus(int newStatus){
+    if (newStatus ==1){
+        thisStatus = ON_LOAN;
+        
+    }
+    else if (newStatus == 2){
+        thisStatus = AVAILABLE_FOR_LENDING;
+    }
+    else{
+        thisStatus = REFERENCE_ONLY;
+    }
 }
 int LibraryBook::getStatus(){
     return thisStatus;
 }
-istream LibraryBook:: operator>>(istream &input, LibraryBook &b){
+istream &operator>>(istream &input, LibraryBook &b){
     string title;
     string author;
     int pages;
-    status bookStatus;
     string inputClassification;
-    input >> title >> ", \"" >> author >> "\" (" >> pages>>" pp.) ["
-            >>inputClassification>>" ">>bookStatus>>"\n";
-    b.setTitle(title);
-    b.setAuthor(author);
-    b.setPages(pages);
-    b.setClassification(inputClassification);
-    b.setStatus(bookStatus);
+    string temp;
+    getline(input,temp,',');
+    b.setAuthor(temp);
+    getline(input,temp,'"');
+    getline(input,temp,'"');
+    b.setTitle(temp);
+    getline(input,temp,'(');
+    getline(input,temp,' ');
+    b.setPages(atoi(temp.c_str()));
+    getline(input,temp,'[');
+    getline(input,temp,' ');
+    b.setClassification(temp);
+    
+    getline(input,temp,']');
+    if (atoi(temp.c_str()) == 1){
+        b.setStatus(LibraryBook::ON_LOAN);
+    }
+    else if(atoi(temp.c_str()) == 2){
+        b.setStatus(LibraryBook::AVAILABLE_FOR_LENDING);
+        
+    }
+    else{
+        b.setStatus(LibraryBook::REFERENCE_ONLY);;
+    }
+    getline(input,temp,'\n');
+            
+    
+    return input;
+    
+}
+ostream &operator << (ostream &output, LibraryBook &b ){
+
+    output << b.getAuthor() << ", \"" << b.getTitle() << "\" (" << b.getPages()
+            <<" pp.) ["<<b.getClassification()<<" ";
+    int x = b.getStatus();
+    string temp;
+    if (x == 1) {
+        temp = "ON_LOAN";
+    }
+    else if (x == 2){
+        temp = "AVAILABLE_FOR_LENDING";
+    }
+    else{
+        temp = "REFERENCE_ONLY";
+    }
+        output<< temp<<"]\n";
+    return output;
 }

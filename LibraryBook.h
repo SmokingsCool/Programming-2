@@ -1,13 +1,15 @@
 /* 
  * File:   LibraryBook.h
- * Author: SmokingsCool
+ * Author: ppr13epu
  *
- * Created on 16 March 2015, 01:36
+ * Created on 18 March 2015, 18:17
  */
+
 
 #ifndef LIBRARYBOOK_H
 #define	LIBRARYBOOK_H
 #include <cstring>
+#include <iostream>
 #include "Book.h"
 using namespace std;
 class LibraryBook : public Book{
@@ -17,14 +19,22 @@ class LibraryBook : public Book{
     public:
         enum status {ON_LOAN = 1, AVAILABLE_FOR_LENDING = 2,REFERENCE_ONLY = 3};
         status thisStatus;
-        LibraryBook(string,string,long);
+        LibraryBook(Book &b,string classifications) : 
+        Book(b.getTitle(), b.getAuthor()){
+            this->classification = classifications;
+        }
         string getClassification();
         void setClassification(string);
-        friend istream operator>>(istream, LibraryBook );
-        enum status;
-        void setStatus(status);
-        status getStatus();        
+        friend istream &operator>>(istream&, LibraryBook&);
+        friend ostream &operator << (ostream&, LibraryBook&);
+      
+        void setStatus(int);
+        int getStatus();        
 };
 
-#endif	/* LIBRARYBOOK_H */
+#endif	
+
+
+
+
 

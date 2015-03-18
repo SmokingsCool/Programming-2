@@ -8,6 +8,8 @@
 #ifndef LIBRARY_H
 #define	LIBRARY_H
 #include <vector>
+#include "Borrower.h"
+#include "LibraryBook.h"
 using namespace std;
 class Library{
     protected:
@@ -16,8 +18,9 @@ class Library{
         
     public:
         Library();
-        borrowBook(Borrower,LibraryBook);
-        returnBook(Borrower,LibraryBook);
+        void borrowBook(Borrower,LibraryBook);
+        void returnBook(Borrower,LibraryBook);
+        
         
     
 };

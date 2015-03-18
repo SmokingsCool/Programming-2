@@ -8,25 +8,27 @@
 #ifndef BORROWER_H
 #define	BORROWER_H
 #include <vector>
+#include "LibraryBook.h"
 using namespace std;
 class Borrower{
     protected:
-        char address [];
-        char name [];
+        string address;
+        string name ;
         long charID;
         vector<Book> borrowed;
         vector<LibraryBook> currentlyBorrowed;
     public:
         void borrowNewBook(LibraryBook);
         void returnBook(LibraryBook);
-        Borrower(char*,char*,long);
-        char* getAddress();
-        char* getName();
+        Borrower(string,string,long);
+        string getAddress();
+        string getName();
         long getcharID();
-        void setAddress(char []);
-        void setName(char []);
-        long setcharID(long);
-        friend istream operator>>(istream , Borrower );
+        void setAddress(string);
+        void setName(string);
+        void setcharID(long);
+        friend istream &operator>>(istream& , Borrower& );
+        friend ostream &operator << (ostream&, Borrower&);
 };
 
 #endif	/* BORROWER_H */

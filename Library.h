@@ -20,7 +20,7 @@ class Library{
         Library();
         void borrowBook(Borrower,LibraryBook);
         void returnBook(Borrower,LibraryBook);
-        
+        vector<LibraryBook> getBooks();
         
     
 };

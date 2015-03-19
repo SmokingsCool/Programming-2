@@ -6,8 +6,9 @@
 using namespace std;
 
 void Borrower::borrowNewBook(LibraryBook newBook){
-    if (newBook.getStatus() ==2 && borrowed.size() != 3){
+    if (newBook.getStatus() ==LibraryBook::AVAILABLE_FOR_LENDING && borrowed.size() != 3){
         borrowed.push_back(newBook);
+        currentlyBorrowed.push_back(newBook);
     }
 };
 void Borrower::returnBook(LibraryBook returnedBook){
@@ -20,6 +21,21 @@ void Borrower::returnBook(LibraryBook returnedBook){
 //    }
 //    returnedBook.setStatus(LibraryBook::status.ON_LOAN);
 //    currentlyBorrowed.push_back(returnedBook);
+    cout<< "before : \n";
+    for (int i = 0; i < currentlyBorrowed.size(); i++){
+        cout << "      " <<currentlyBorrowed[i];    
+    }
+    
+    for(int i = 0; i< currentlyBorrowed.size(); i ++){
+        if (currentlyBorrowed[i].getClassification() == returnedBook.getClassification()){
+            currentlyBorrowed.erase(currentlyBorrowed.begin()+i);
+        }
+    }
+    for (int i = 0; i < currentlyBorrowed.size(); i++){
+        cout << "      " <<currentlyBorrowed[i];    
+    }
+    
+    
 };
 Borrower::Borrower(string firstAddress ,string firstName, long firstcharID){
     address = firstAddress;

@@ -45,10 +45,10 @@ istream &operator>>(istream &input, LibraryBook &b){
     b.setClassification(temp);
     
     getline(input,temp,']');
-    if (atoi(temp.c_str()) == 1){
+    if (temp == "ON LOAN"){
         b.setStatus(LibraryBook::ON_LOAN);
     }
-    else if(atoi(temp.c_str()) == 2){
+    else if(temp == "AVAILABLE FOR LENDING"){
         b.setStatus(LibraryBook::AVAILABLE_FOR_LENDING);
         
     }
@@ -67,10 +67,10 @@ ostream &operator << (ostream &output, LibraryBook &b ){
             <<" pp.) ["<<b.getClassification()<<" ";
     int x = b.getStatus();
     string temp;
-    if (x == 1) {
+    if (x == LibraryBook::ON_LOAN) {
         temp = "ON_LOAN";
     }
-    else if (x == 2){
+    else if (x == LibraryBook::AVAILABLE_FOR_LENDING){
         temp = "AVAILABLE_FOR_LENDING";
     }
     else{

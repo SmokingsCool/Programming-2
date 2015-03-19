@@ -44,7 +44,7 @@ Library::Library(){
             getline(transactionsFile,temp,'"');
             LB.setTitle(temp);
             getline(transactionsFile,temp,'\n');
-            cout << "\n\n\n\n\n";
+            cout << "\n\n\n\nBorrowing:\n";
             for (int i = 0; i < userCollection.size();i++){
                 
                 string temp1 = userCollection[i].getName();
@@ -58,15 +58,43 @@ Library::Library(){
                         string temp4 = LB.getTitle();
                         if ( temp1 == temp2
                                 &&  temp3 == temp4){
-                            cout << "\n        " << LB.getAuthor() <<"   " << LB.getTitle();
+                            cout <<bookCollection[j];
                             userCollection[i].borrowNewBook(bookCollection[j]);
                         }
                     }
                 }
             }
         }
-        else{
+        else if(temp == "return:"){
+            getline(transactionsFile,temp,':');
+            temp.erase(temp.size()-1);
+            bo.setName(temp);
+            getline(transactionsFile,temp,' ');
+            getline(transactionsFile,temp,',');
+            LB.setAuthor(temp);
+            getline(transactionsFile,temp,'"');
+            getline(transactionsFile,temp,'"');
+            LB.setTitle(temp);
             getline(transactionsFile,temp,'\n');
+            cout << "\n\n\n\nReturning:\n";
+            for (int i = 0; i < userCollection.size();i++){
+                
+                string temp1 = userCollection[i].getName();
+                string temp2 = bo.getName();
+                if (temp1 == temp2){
+                    cout << bo.getName();
+                    for (int j = 0; j < bookCollection.size();j++){
+                        string temp1 = bookCollection[j].getAuthor();
+                        string temp2 = LB.getAuthor();
+                        string temp3 = bookCollection[j].getTitle();
+                        string temp4 = LB.getTitle();
+                        if ( temp1 == temp2
+                                &&  temp3 == temp4){
+                            userCollection[i].returnBook(bookCollection[j]);
+                        }
+                    }
+                }
+            }
         }
         //transactionsFile >> LB, bo;
         
@@ -88,6 +116,10 @@ Library::Library(){
 //        for (int j = 0; j < )
 //    }
 //    
+    
+}
+vector<LibraryBook> Library::getBooks(){
+    return bookCollection;
     
 }
 void Library::borrowBook(Borrower user,LibraryBook book){
